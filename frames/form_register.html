@@ -1,0 +1,21 @@
+<style>
+	label {
+		vertical-align: top;
+		width: 40%%;
+		display: inline-block;
+		margin-top: 2%%;
+	}
+	input, textarea {
+		width: 60%%;
+		display: inline-block;
+	}
+</style>
+<div style="width:25%%;border:1px solid black;">
+	<form method="POST" action="/register/">
+		<label for="username">Username: </label><input type="text" name="username"><br/>
+		<label for="password">Password: </label><input type="password" name="password"><br/>
+		<label for="firstname">First name: </label><input type="text" name="firstname"><br/>
+		<label for="lastname">Last name: </label><input type="text" name="lastname"><br/>
+		<button type="submit">Register</button>
+	</form>
+</div>

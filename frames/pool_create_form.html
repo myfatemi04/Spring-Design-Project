@@ -1,0 +1,25 @@
+<style>
+	label {
+		vertical-align: top;
+		width: 40%%;
+		display: inline-block;
+		margin-top: 2%%;
+	}
+	input, textarea {
+		width: 60%%;
+		display: inline-block;
+	}
+</style>
+<h1>Create A Pool</h1>
+<div style="width:25%%;border:1px solid black;">
+	<form method="post" action="/createpool/do/">
+		<label for="pool_size">Pool size:</label><input type="number" name="pool_size"><br/>
+		<label for="pool_date">Date:</label><input type="date" name="pool_date"><br/>
+		<label for="leave_time">Depart time:</label><input type="time" name="leave_time"><br/>
+		<label for="come_time">Dropoff time:</label><input type="time" name="come_time"><br/>
+		<label for="leave_location">Depart location:</label><input type="text" name="leave_location"><br/>
+		<label for="come_location">Dropoff location:</label><input type="text" name="come_location"><br/>
+		<label for="comments">Comments:</label><textarea name="comments"></textarea><br/>
+		<button type="submit">Submit</button>
+	</form>
+</div>

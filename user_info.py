@@ -5,6 +5,15 @@ import globals
 
 blueprint = Blueprint('register', __name__, template_folder='')
 
+def get_user_info(username):
+	cur = globals.mysqld.cursor(buffered=True)
+	cur.execute("select * from users where username = %s;", (username,))
+	f = cur.fetchall()
+	if (len(f) > 0):
+		return f[0]
+	else:
+		return []
+
 @blueprint.route("/register/", methods = ['GET', 'POST'])
 def register():
 	username = request.form.get('username')
@@ -59,4 +68,4 @@ def logout():
 
 @blueprint.route("/user/<string:username>")
 def user_contact(username='null'):
-	return txt("frame", script = '', style = '', title = 'Contact Info: ' + username, body = get_nav(session) + "<br/>" + txt("contact_info", driver_id = username)
+	return txt("frame", script = '', style = '', title = 'Contact Info: ' + username, body = get_nav(session) + "<br/>" + txt("contact_info", driver_id = username, phone = get_user_info(username)[6]))

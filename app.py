@@ -22,11 +22,10 @@ def main():
 	pools = cur.fetchall()
 	cur.execute("select * from links;")
 	links = cur.fetchall()
-	ret = "Welcome!<br/><h2>Users:</h2><ul>"
+	ret = "Welcome!<br/><h2>Users:</h2><br/><ul>"
 	for u in users:
 		ret = ret + "<li>%s %s [%s]</li>" % (u[2], u[3], u[0])
-	ret = ret + "</ul>"
-	ret = ret + "<h2>Carpools:</h2><ul>"
+	ret = ret + "</ul><h2>Carpools:</h2><ul>"
 	for x in pools:
 		p = get_pool_info(x[0])
 		ret = ret + txt("pool_box", **p)

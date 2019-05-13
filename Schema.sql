@@ -7,6 +7,7 @@ create table if not exists users (
 	lastName VARCHAR(255),
 	ridesGiven INT(5),
 	ridesTaken INT(5),
+	phoneNumber VARCHAR(100),
 	
 	PRIMARY KEY (username)
 );

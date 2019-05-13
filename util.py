@@ -20,7 +20,6 @@ def txt(fname="frame", **args):
 	txt = open(filename).read()
 	cache[fname] = (os.path.getmtime(filename), txt)
 	return txt % args
-
 def user_exists(username, cursor=None):
 	if cursor == None:
 		cursor = globals.mysqld.cursor()

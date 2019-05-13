@@ -11,12 +11,13 @@ def register():
 	firstname = request.form.get('firstname')
 	lastname = request.form.get('lastname')
 	password = request.form.get('password')
+	phone = request.form.get('phone')
 	
-	if all((username, firstname, lastname, password)):
+	if all((username, firstname, lastname, password, phone)):
 		cursor = globals.mysqld.cursor(buffered=True)
 		password_encrypt = generate_password_hash(password)
 		if not user_exists(username, cursor):
-			cursor.execute("insert into users values (%s, %s, %s, %s, %s, %s)", (username, password_encrypt, firstname, lastname, 0, 0))
+			cursor.execute("insert into users values (%s, %s, %s, %s, %s, %s, %s)", (username, password_encrypt, firstname, lastname, 0, 0, phone))
 			globals.mysqld.commit()
 			
 			return txt("frame", title="Register", style="", script="", body=get_nav(session) + "Added {} [{}, {}]".format(username, firstname, lastname))
@@ -55,3 +56,7 @@ def logout():
 		return txt("frame", script = '', style = '', title = 'Log out', body = get_nav(session) + "<br/>Successfully logged out")
 	else:
 		return txt("frame", script = '', style = '', title = 'Log out', body = get_nav(session) + "<br/>You aren't logged in")
+
+@blueprint.route("/user/<string:username>")
+def user_contact(username='null'):
+	return txt("frame", script = '', style = '', title = 'Contact Info: ' + username, body = get_nav(session) + "<br/>" + txt("contact_info", driver_id = username)

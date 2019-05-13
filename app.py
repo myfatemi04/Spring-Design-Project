@@ -1,6 +1,6 @@
 from flask import Flask, render_template, json, request, session
 from werkzeug import generate_password_hash, check_password_hash
-import register
+import user_info
 import pool_signup
 import globals
 import os.path
@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 app.secret_key = 'PkOBZ0LzRZ3abaSdYaZF'
 
-app.register_blueprint(register.blueprint)
+app.register_blueprint(user_info.blueprint)
 app.register_blueprint(pool_signup.blueprint)
 
 @app.route("/")
